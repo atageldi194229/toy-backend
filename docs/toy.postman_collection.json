@@ -1,0 +1,813 @@
+{
+	"info": {
+		"_postman_id": "5fae3f01-edc3-4937-97fe-c8c465a2d44c",
+		"name": "toy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TOY_URL}}/api/auth/register",
+							"host": [
+								"{{TOY_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/register",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"refreshToken\": \"092a9684-6ced-4227-811e-564e4b29a0fc\",\n    \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2MzEwODM3MCwiZXhwIjoxNjYzMTExOTcwfQ.sgpx4RFcC9soU9eEK21FHz5-xXHXprJwD-AvCc065JZhrPcXzHZHqfas2zVfW5GC1y-_j6fZyt81vIp4jcMO9jh0wWqVoOwvKxj4lRduIp7QQaOPOqaIaqn59OPFXIMkxdvYOXOI1AuRYTELu9iRGttXHJBiy3vOG0sxYn4TSIx_cZ1GO0mstEXtxPlZpfYZvzLK7_JUFXCOQnG5yQCkIAXPbmQR3lAj2zgUFQZ8RKWNUaFTfY0ujFCj2o2y7eqobHZYJ3JIhldccrXa5UZzcqL8pP8X47oaVQUPSwkeICyl0HnaqWv-Kd4n7s-5SV2LR7Y-e6izwIHoFmcXuJlZRUrS2HiffsnhBRoyiGC-p_kx9Y6mxpZY4D8HaeKKBszaEyjvN5kNMqNy7_crHkrzX1bTYECWv5qqQL6hBQ8Za8r2AP1KGkrd2g3fPXxgfkozJKpfISc3f0Pe31YtQkXxGr0Kv98-wVM-6gsP0oklwHUTUdfSM9ac18PH5KQWs_nP3A2r0LoLMJCTLjwO-O4KO75ROwVbtoH1UPK2sYr7li3ugCDibboW8cTn7ioRinNlYgDEAZjsgkLFHifEllwa9YRhCTc2GNqG80MLnZX-sKlkXiDX1wwSbs2tbVTSrGf4GUtBhZQKiqtP3ugmXM0di9qaz7qEW6qZhOsci4nA0Jc\"\n}"
+						},
+						{
+							"name": "user already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/register",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-5AhiKPhWZ2iFkwRsraiCh/oK6Y8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Sep 2022 22:39:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"name\": \"UserExists\",\n        \"mess\": \"User already exists\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TOY_URL}}/api/auth/login",
+							"host": [
+								"{{TOY_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/login",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"refreshToken\": \"092a9684-6ced-4227-811e-564e4b29a0fc\",\n    \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2MzEwODM3MCwiZXhwIjoxNjYzMTExOTcwfQ.sgpx4RFcC9soU9eEK21FHz5-xXHXprJwD-AvCc065JZhrPcXzHZHqfas2zVfW5GC1y-_j6fZyt81vIp4jcMO9jh0wWqVoOwvKxj4lRduIp7QQaOPOqaIaqn59OPFXIMkxdvYOXOI1AuRYTELu9iRGttXHJBiy3vOG0sxYn4TSIx_cZ1GO0mstEXtxPlZpfYZvzLK7_JUFXCOQnG5yQCkIAXPbmQR3lAj2zgUFQZ8RKWNUaFTfY0ujFCj2o2y7eqobHZYJ3JIhldccrXa5UZzcqL8pP8X47oaVQUPSwkeICyl0HnaqWv-Kd4n7s-5SV2LR7Y-e6izwIHoFmcXuJlZRUrS2HiffsnhBRoyiGC-p_kx9Y6mxpZY4D8HaeKKBszaEyjvN5kNMqNy7_crHkrzX1bTYECWv5qqQL6hBQ8Za8r2AP1KGkrd2g3fPXxgfkozJKpfISc3f0Pe31YtQkXxGr0Kv98-wVM-6gsP0oklwHUTUdfSM9ac18PH5KQWs_nP3A2r0LoLMJCTLjwO-O4KO75ROwVbtoH1UPK2sYr7li3ugCDibboW8cTn7ioRinNlYgDEAZjsgkLFHifEllwa9YRhCTc2GNqG80MLnZX-sKlkXiDX1wwSbs2tbVTSrGf4GUtBhZQKiqtP3ugmXM0di9qaz7qEW6qZhOsci4nA0Jc\"\n}"
+						},
+						{
+							"name": "incorrect password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/login",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-Bl/P29fDFYeo3rcS0o90K+It5SY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Sep 2022 22:36:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"name\": \"IncorrectPasswordError\",\n        \"mess\": \"incorrect password bro\"\n    }\n}"
+						},
+						{
+							"name": "user not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+9930000000\",\n    \"password\": \"atasan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/login",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-kh0MvFVlLj6wUq3e1VHBv9pnZxI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Sep 2022 22:37:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"name\": \"UserNotFound\",\n        \"mess\": \"User not found\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refreshToken\": \"3e4c3d76-013e-4f41-8803-3429cd113937\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TOY_URL}}/api/auth/refresh-token",
+							"host": [
+								"{{TOY_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "refresh token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\": \"3e4c3d76-013e-4f41-8803-3429cd113937\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/refresh-token",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"refreshToken\": \"092a9684-6ced-4227-811e-564e4b29a0fc\",\n    \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2MzEwODM3MCwiZXhwIjoxNjYzMTExOTcwfQ.sgpx4RFcC9soU9eEK21FHz5-xXHXprJwD-AvCc065JZhrPcXzHZHqfas2zVfW5GC1y-_j6fZyt81vIp4jcMO9jh0wWqVoOwvKxj4lRduIp7QQaOPOqaIaqn59OPFXIMkxdvYOXOI1AuRYTELu9iRGttXHJBiy3vOG0sxYn4TSIx_cZ1GO0mstEXtxPlZpfYZvzLK7_JUFXCOQnG5yQCkIAXPbmQR3lAj2zgUFQZ8RKWNUaFTfY0ujFCj2o2y7eqobHZYJ3JIhldccrXa5UZzcqL8pP8X47oaVQUPSwkeICyl0HnaqWv-Kd4n7s-5SV2LR7Y-e6izwIHoFmcXuJlZRUrS2HiffsnhBRoyiGC-p_kx9Y6mxpZY4D8HaeKKBszaEyjvN5kNMqNy7_crHkrzX1bTYECWv5qqQL6hBQ8Za8r2AP1KGkrd2g3fPXxgfkozJKpfISc3f0Pe31YtQkXxGr0Kv98-wVM-6gsP0oklwHUTUdfSM9ac18PH5KQWs_nP3A2r0LoLMJCTLjwO-O4KO75ROwVbtoH1UPK2sYr7li3ugCDibboW8cTn7ioRinNlYgDEAZjsgkLFHifEllwa9YRhCTc2GNqG80MLnZX-sKlkXiDX1wwSbs2tbVTSrGf4GUtBhZQKiqtP3ugmXM0di9qaz7qEW6qZhOsci4nA0Jc\"\n}"
+						},
+						{
+							"name": "token not found or expired",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\": \"3e4c3d76-013e-4f41-8803-3429cd113937\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/refresh-token",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6e-Dm3iZ96m+j/wC+Uz+1IqviaX2/s\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Sep 2022 22:37:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"name\": \"TokenNotFound\",\n        \"mess\": \"Token not found, please check logged devices for security purposes\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "verify user (only for dev)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phoneNumber\": \"+99364530230\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TOY_URL}}/api/auth/verify-user",
+							"host": [
+								"{{TOY_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verify-user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "verify user (only for dev)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/verify-user",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"verify-user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Sep 2022 22:38:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "change password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\",\n    \"oldPassword\": \"atasan1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TOY_URL}}/api/auth/change-password",
+							"host": [
+								"{{TOY_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "incorrect password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\",\n    \"oldPassword\": \"atasan1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/change-password",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"change-password"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-Bl/P29fDFYeo3rcS0o90K+It5SY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Sep 2022 22:38:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"name\": \"IncorrectPasswordError\",\n        \"mess\": \"incorrect password bro\"\n    }\n}"
+						},
+						{
+							"name": "change password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan1\",\n    \"oldPassword\": \"atasan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/change-password",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"change-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Sep 2022 22:39:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "user exists",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phoneNumber\": \"+99364530230\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TOY_URL}}/api/auth/user-exists",
+							"host": [
+								"{{TOY_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"user-exists"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "if user exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/user-exists",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"user-exists"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"exists\": {\n        \"phoneNumber\": true\n    }\n}"
+						},
+						{
+							"name": "if user does not exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99300000000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/user-exists",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"user-exists"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"exists\": {\n        \"phoneNumber\": false\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
