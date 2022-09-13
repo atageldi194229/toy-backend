@@ -2,7 +2,7 @@
 # First create toy_db database in the postgresql
 
 npm install
-npm run setup.js
+npm run setup
 
 npm run dev
 # or
