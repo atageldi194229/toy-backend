@@ -6,6 +6,6 @@ const { sequelize } = require("../models");
   await sequelize.sync({ force: true });
 
   // end process
-  console.log("The end.");
+  console.log("Setup done.");
   process.exit();
 })();

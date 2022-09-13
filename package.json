@@ -4,6 +4,7 @@
   "description": "Toy Flutter app's backend",
   "main": "server.js",
   "scripts": {
+    "setup": "node seeders/init.js",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
