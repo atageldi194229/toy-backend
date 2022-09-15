@@ -55,6 +55,20 @@ class Unauthorized extends ServerError {
   }
 }
 
+class TokenExpired extends ServerError {
+  constructor() {
+    super(
+      "Token is expired, please check logged devices for security purposes"
+    );
+  }
+}
+
+class TokenDecodeError extends ServerError {
+  constructor() {
+    super("Could not decode token");
+  }
+}
+
 exports.ServerError = ServerError;
 exports.DatabaseError = DatabaseError;
 exports.IncorrectPasswordError = IncorrectPasswordError;
@@ -64,3 +78,5 @@ exports.UserExists = UserExists;
 exports.TokenNotFound = TokenNotFound;
 exports.UserNotVerified = UserNotVerified;
 exports.Unauthorized = Unauthorized;
+exports.TokenExpired = TokenExpired;
+exports.TokenDecodeError = TokenDecodeError;

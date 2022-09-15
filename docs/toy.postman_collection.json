@@ -10,6 +10,20 @@
 			"item": [
 				{
 					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJson = pm.response.json();",
+									"",
+									"pm.globals.set(\"REFRESH_TOKEN\", responseJson[\"refreshToken\"]);",
+									"pm.globals.set(\"ACCESS_TOKEN\", responseJson[\"accessToken\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -136,6 +150,20 @@
 				},
 				{
 					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJson = pm.response.json();",
+									"",
+									"pm.globals.set(\"REFRESH_TOKEN\", responseJson[\"refreshToken\"]);",
+									"pm.globals.set(\"ACCESS_TOKEN\", responseJson[\"accessToken\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -161,39 +189,6 @@
 						}
 					},
 					"response": [
-						{
-							"name": "login",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{TOY_URL}}/api/auth/login",
-									"host": [
-										"{{TOY_URL}}"
-									],
-									"path": [
-										"api",
-										"auth",
-										"login"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"body": "{\n    \"refreshToken\": \"092a9684-6ced-4227-811e-564e4b29a0fc\",\n    \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2MzEwODM3MCwiZXhwIjoxNjYzMTExOTcwfQ.sgpx4RFcC9soU9eEK21FHz5-xXHXprJwD-AvCc065JZhrPcXzHZHqfas2zVfW5GC1y-_j6fZyt81vIp4jcMO9jh0wWqVoOwvKxj4lRduIp7QQaOPOqaIaqn59OPFXIMkxdvYOXOI1AuRYTELu9iRGttXHJBiy3vOG0sxYn4TSIx_cZ1GO0mstEXtxPlZpfYZvzLK7_JUFXCOQnG5yQCkIAXPbmQR3lAj2zgUFQZ8RKWNUaFTfY0ujFCj2o2y7eqobHZYJ3JIhldccrXa5UZzcqL8pP8X47oaVQUPSwkeICyl0HnaqWv-Kd4n7s-5SV2LR7Y-e6izwIHoFmcXuJlZRUrS2HiffsnhBRoyiGC-p_kx9Y6mxpZY4D8HaeKKBszaEyjvN5kNMqNy7_crHkrzX1bTYECWv5qqQL6hBQ8Za8r2AP1KGkrd2g3fPXxgfkozJKpfISc3f0Pe31YtQkXxGr0Kv98-wVM-6gsP0oklwHUTUdfSM9ac18PH5KQWs_nP3A2r0LoLMJCTLjwO-O4KO75ROwVbtoH1UPK2sYr7li3ugCDibboW8cTn7ioRinNlYgDEAZjsgkLFHifEllwa9YRhCTc2GNqG80MLnZX-sKlkXiDX1wwSbs2tbVTSrGf4GUtBhZQKiqtP3ugmXM0di9qaz7qEW6qZhOsci4nA0Jc\"\n}"
-						},
 						{
 							"name": "incorrect password",
 							"originalRequest": {
@@ -325,17 +320,97 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"error\": {\n        \"name\": \"UserNotFound\",\n        \"mess\": \"User not found\"\n    }\n}"
+						},
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/login",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1650"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"672-zKhSQS3H3hvNjqQnsIbcahRwy7Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 03:51:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTY2MzIxMzg3NCwiZXhwIjoxNjYzMzAwMjc0fQ.cqQnzjfzieB2xY4mszrw1gJ0oayuQ7dpbblP8ZzhcHaEGu6P82ZgjjS__HN9iK87mE1laxr7WTpdhDXzBiRhasKVS9TlKox8z1PTHdlrdN1RKDECe1itck9ooEFQW4Eb7B4Bg0UcLZ3O3mqiBtyvsbGDozozDBfpz_lwMNTHKx3yZNLZ3Iz6QVUnOGtDDnhOD1fZn2VEGWcWZg5t9c3CuBltGuPNa-pthCaWu0GU78_X3sBdQ8w45ihDbOoPhco8j38fs49WVjnmBMnF9KoTgkQjO80hhu-DpYXEooElbSZKVa825qIyJBcToCFvypXletse5aaFqdT4pYVEG_3rzpMEv9bAUKYjaKBGEHPGYaEW9qcTbdKoWF_BW0DxlZGuiuSylE2fwblEM1q3TiTqmKYUA-UwW7jhlSSvTafG9h5WfmxFT5ZfPwKob35_WlcSGw_5qXN4EB-5-bCo-NZx30zQUTl0gwhBnDx9aN_zwsWevpI0BknJW8p0pr8phSAld7nabAI6gMsCBQ7N8f4KVnYKQo6T8I-iHWyYugxCVrEWumFdzFQ2JFdGwOQlnjIZllEpNN4RQO8IkNgaWF9FaPsxoUiNuP61DsHErHmtK-3B9Ckjp4zGMfWXAInVkHB8xfr8AtbxtH0C0V-KCt8IQauux5nyUvPAFlQxof1C0Mc\",\n    \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTY2MzIxMzg3NCwiZXhwIjoxNjYzMjE3NDc0fQ.iXBsQBepsA0LmzVjj93m9IN2__SgYbr7iw679is9ZtlMaJQZn1d9BTFmh-MYlfr9Hhk_Q7km7OA4zQX8Yp5hGcuZzrDF1mfxIiQjRu34bmzgYWWkeNqQCe-ZXf5hqkA2zi0CGp6hXwOYh30RB8BHRc5jrDO2KnOEeU9GnCyYm9_vdfR6Z-sfkvzLLm8inYp-4nevIvgDhigWymIV7lwAjjWkwbGkA_u4y31A-2UXhhzbGubQT0iFFlqPU2kowgZ7HJrlUNxc9LRC1IvrMwcTdw_7dD6P_jds3gqXsAgeMPwIeL2tRX3FYqLCL0fro-ZUeTvyo0v41Nvwoj3Van5lURs8Zv-TeFZlNfIa6H4v5ALLOwnP6Pyc1Ew4d3P-TLvJQbETvXOHnMLO2VuHpYxB6eNbj6cXSMWG5ASSZbwTF05zYkHOhq7WIrkkCsMXEbW2tey3CVh357dhkDGdirNxYADB3xl3cQqB-kOfrYRuVHlDVwa_YnOecCVaecBR70aOnpRzAKvKn7zaMD56XuLMACO0rccRziSNE-QeY8Gj45iRwRzhoiE3Z1nyQOEI28fIhp91lEDWCBZF4NPuwg-0PZ1vVHbzv18oe7CQDqJvaC_ADNBl1cvRzC7C3kLTwzjNadww_BX9L2pTg8EcRV6j3oB6XNjchLTzfyW9XWknOP0\"\n}"
 						}
 					]
 				},
 				{
 					"name": "refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var responseJson = pm.response.json();",
+									"",
+									"pm.globals.set(\"REFRESH_TOKEN\", responseJson[\"refreshToken\"]);",
+									"pm.globals.set(\"ACCESS_TOKEN\", responseJson[\"accessToken\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"refreshToken\": \"3e4c3d76-013e-4f41-8803-3429cd113937\"\n}",
+							"raw": "{\n    \"refreshToken\": \"{{REFRESH_TOKEN}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -355,39 +430,6 @@
 						}
 					},
 					"response": [
-						{
-							"name": "refresh token",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"refreshToken\": \"3e4c3d76-013e-4f41-8803-3429cd113937\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{TOY_URL}}/api/auth/refresh-token",
-									"host": [
-										"{{TOY_URL}}"
-									],
-									"path": [
-										"api",
-										"auth",
-										"refresh-token"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": null,
-							"header": null,
-							"cookie": [],
-							"body": "{\n    \"refreshToken\": \"092a9684-6ced-4227-811e-564e4b29a0fc\",\n    \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY2MzEwODM3MCwiZXhwIjoxNjYzMTExOTcwfQ.sgpx4RFcC9soU9eEK21FHz5-xXHXprJwD-AvCc065JZhrPcXzHZHqfas2zVfW5GC1y-_j6fZyt81vIp4jcMO9jh0wWqVoOwvKxj4lRduIp7QQaOPOqaIaqn59OPFXIMkxdvYOXOI1AuRYTELu9iRGttXHJBiy3vOG0sxYn4TSIx_cZ1GO0mstEXtxPlZpfYZvzLK7_JUFXCOQnG5yQCkIAXPbmQR3lAj2zgUFQZ8RKWNUaFTfY0ujFCj2o2y7eqobHZYJ3JIhldccrXa5UZzcqL8pP8X47oaVQUPSwkeICyl0HnaqWv-Kd4n7s-5SV2LR7Y-e6izwIHoFmcXuJlZRUrS2HiffsnhBRoyiGC-p_kx9Y6mxpZY4D8HaeKKBszaEyjvN5kNMqNy7_crHkrzX1bTYECWv5qqQL6hBQ8Za8r2AP1KGkrd2g3fPXxgfkozJKpfISc3f0Pe31YtQkXxGr0Kv98-wVM-6gsP0oklwHUTUdfSM9ac18PH5KQWs_nP3A2r0LoLMJCTLjwO-O4KO75ROwVbtoH1UPK2sYr7li3ugCDibboW8cTn7ioRinNlYgDEAZjsgkLFHifEllwa9YRhCTc2GNqG80MLnZX-sKlkXiDX1wwSbs2tbVTSrGf4GUtBhZQKiqtP3ugmXM0di9qaz7qEW6qZhOsci4nA0Jc\"\n}"
-						},
 						{
 							"name": "token not found or expired",
 							"originalRequest": {
@@ -453,6 +495,72 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"error\": {\n        \"name\": \"TokenNotFound\",\n        \"mess\": \"Token not found, please check logged devices for security purposes\"\n    }\n}"
+						},
+						{
+							"name": "refresh token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTY2MzIxMzg3NCwiZXhwIjoxNjYzMzAwMjc0fQ.cqQnzjfzieB2xY4mszrw1gJ0oayuQ7dpbblP8ZzhcHaEGu6P82ZgjjS__HN9iK87mE1laxr7WTpdhDXzBiRhasKVS9TlKox8z1PTHdlrdN1RKDECe1itck9ooEFQW4Eb7B4Bg0UcLZ3O3mqiBtyvsbGDozozDBfpz_lwMNTHKx3yZNLZ3Iz6QVUnOGtDDnhOD1fZn2VEGWcWZg5t9c3CuBltGuPNa-pthCaWu0GU78_X3sBdQ8w45ihDbOoPhco8j38fs49WVjnmBMnF9KoTgkQjO80hhu-DpYXEooElbSZKVa825qIyJBcToCFvypXletse5aaFqdT4pYVEG_3rzpMEv9bAUKYjaKBGEHPGYaEW9qcTbdKoWF_BW0DxlZGuiuSylE2fwblEM1q3TiTqmKYUA-UwW7jhlSSvTafG9h5WfmxFT5ZfPwKob35_WlcSGw_5qXN4EB-5-bCo-NZx30zQUTl0gwhBnDx9aN_zwsWevpI0BknJW8p0pr8phSAld7nabAI6gMsCBQ7N8f4KVnYKQo6T8I-iHWyYugxCVrEWumFdzFQ2JFdGwOQlnjIZllEpNN4RQO8IkNgaWF9FaPsxoUiNuP61DsHErHmtK-3B9Ckjp4zGMfWXAInVkHB8xfr8AtbxtH0C0V-KCt8IQauux5nyUvPAFlQxof1C0Mc\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/refresh-token",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1650"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"672-j+sOSGvMge5btkBOPv4T9Ndjx84\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 03:51:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTY2MzIxMzkwNSwiZXhwIjoxNjYzMzAwMzA1fQ.HBM8NGoqYJEZNiuCSixE19CeD0SpmQqXqk_sSgqqL4wid9rZwa-l-eZ86wIhO4ufzP3tM8Ar6iwfHBMYCBxAa0Tz8W3YekI0Ns2jFx0h5amEx6ZU8fCNZu25EgxAZ_OVZEx4XYsUFcTeOtcUEkhcCPG7x6-6IL1Sok6y2khxQFpcsAUjnzTlm_y6hExAmyW4l4-nvRxzBNqt0Ic9XZan9w4fDA7sr-gD4Z9Jx-O9hACR2RfVMQdtDOFRSCfADG-HeFZgUpjkvbXax0PAXTufjgei1fKcIBdwJrX3wfy4QkhUo7ZBw1ET_iqlHl_kiBApuUhgAKCiV0NgxpLrYlBkPWg7o3KIbf9yZtnaGSlL8VatPApujKaQpoMMiJKwFYJHXBUt6ULarEFBhXk3lNIiE0ZQydxUgDRd_jSHgpOgypaqZD8XLDUfkbgzWflOVQDdeJHW9i7eRlYSqpmr4UCmnoU8pDg_3jQXZ-OKt3uL1ADKpxK5Au4353BSKTqFrpU0hpAqc1XR9kLYJhCjvtPJ2X-9IdcQcKREtmG85H7q4CR2O8b6Ryxmt2Dhth9kSBY1awfwkzN77OmjJLLHueBVVPwO5hS7eU9SOyGNuQ0YHa_66nD_ng1EJRembAaMHbrnlw3OPQh8IlgLD8kNJB7A349_EcVNhwp8ZXfPMqDZu28\",\n    \"accessToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTY2MzIxMzkwNSwiZXhwIjoxNjYzMjE3NTA1fQ.GJDfaIsR3hOzLH1bXUNvHQS-oCWW6ebbCIkWoRUTw1pLzWLrRfjekzK2gPfkAFcBzv8EKN0E5_2QRkQXVeQXQSsLXNUJFQ3Oh19xAp-Xmdm--Gbf4S05d9VupGa5cobVMUGM6NDluOCCECTdooeTroLXyMacSX97hSQJxpvKM947_B_UZL-SUQPxfuGmWE1FZ1T4c4taTk4z_oXrB7ZuF-896hmxqJ4sEpxoYqxiCCvKWpd25iOM0CGc5ysDLHKEk1Xdz-H1cwyY2qn735NFVWKj7gXkVYBBXHODF2GGQlWu6WuK6dHCyhnXT-ig_qy895LNfhaZufcElVsICvrdPplVvK3l7A3RPjvJfe390RJj1t7DqyN8vW23S0VbjAz3YHcRbssRygtnhF1b77emeq_EbQA2SBERwbBw9PEzbCWPwfw6QPRWL9Z4HPti4CLGFRytNpyUzd-lR4k0hifC4fYXqAsrk-03ZKUPE5_Qvsb6dULTS3SbRmVt96oJvJsF2L9ryktO33aTW1BV7F_V0cJg0pLyV5bSoRHxfxKpsQvHjqhoR3EwB4jg_L6BmlzkHsvyQvvEMY_PDoSF_DOL0ailctA7cgts3g-JXJyTktmvQF_8t4SPJaD0OkZtj3oEjo1gG6KiELqXEE-3dGFxxcCR_IIuYUTB4EUdtTVQtt8\"\n}"
 						}
 					]
 				},
@@ -579,72 +687,6 @@
 					},
 					"response": [
 						{
-							"name": "incorrect password",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\",\n    \"oldPassword\": \"atasan1\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{TOY_URL}}/api/auth/change-password",
-									"host": [
-										"{{TOY_URL}}"
-									],
-									"path": [
-										"api",
-										"auth",
-										"change-password"
-									]
-								}
-							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Access-Control-Allow-Origin",
-									"value": "*"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "75"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"4b-Bl/P29fDFYeo3rcS0o90K+It5SY\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 13 Sep 2022 22:38:43 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"error\": {\n        \"name\": \"IncorrectPasswordError\",\n        \"mess\": \"incorrect password bro\"\n    }\n}"
-						},
-						{
 							"name": "change password",
 							"originalRequest": {
 								"method": "POST",
@@ -709,6 +751,72 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": true\n}"
+						},
+						{
+							"name": "incorrect password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"+99364530230\",\n    \"password\": \"atasan\",\n    \"oldPassword\": \"atasan1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/change-password",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"change-password"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4b-Bl/P29fDFYeo3rcS0o90K+It5SY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Sep 2022 22:38:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"name\": \"IncorrectPasswordError\",\n        \"mess\": \"incorrect password bro\"\n    }\n}"
 						}
 					]
 				},
@@ -804,6 +912,246 @@
 							"header": null,
 							"cookie": [],
 							"body": "{\n    \"exists\": {\n        \"phoneNumber\": false\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get auth tokens",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TOY_URL}}/api/auth/auth-tokens",
+							"host": [
+								"{{TOY_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"auth-tokens"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get auth tokens",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/auth-tokens",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"auth-tokens"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7201"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c21-6tjw9iNBU5xTvwHktQ+diO9XYPM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 09:07:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 6,\n    \"rows\": [\n        {\n            \"id\": 2,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE2NjMyMTM3MzcsImV4cCI6MTY2MzMwMDEzN30.Zj01mZ-dykeIh59-upZkthEur9NAmhdcqQiGnsKcGkc3pawBd7TAiUbw3lCu3OktS0us48Ldhe7LyuOQm17qzx15th2xujRxsqaOE_c87d7KquzN_f72sbER04aL2PGqJjFRgphFXM9Sehz29DQx2YugZ73CCCGr7yutHaV5GZfPSR7bvQViEbkcjV7UrZIsk6pjsCfnTsrf1KndmI6FDNabGrBMf-r7jZeBFh8pw89SATBEjy_FI6nGPTsxJ8vBNrlInne6AMnPFNHRNH2zBjqcIR0TBNFTRuemQLJu_DArp9VQJh4TE-RjFqmkWp2RdKvbKVon4WNlka98Hwv15qo7iRyKYLnBAtyFG_kr17MBaOtf00bT3io9QumokYGIPjoVuDTLJaUxb5T2_BO2CT_NvSx2bYzUJUsRgRnsrOHYGSaO8UZe57s4p9YRL82jEYr5zJOeQtJvylo4hTzGRO8OGpbvzVlcNiJn-ZgYDFdhvzjXzfunjG2UZzPSPdm5-RwIfD-hqlX13365bnaL9UFjB4PEbGOJFBVTVowVaZxcjLWp4IanmTwsgq7w1OOmnMViPodGE6VrvEvmL9wB_CZhdBiLRcvvdKJAGtaS1Q-oWD9fq7TP-lUK7PX8pugGWlBES_8l_eYXcZJGwwCSpD0LPam489ge7fpVvR2yjoU\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"07312683-ef56-44ea-8596-b527a4f1d7c9\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"834\"\n            },\n            \"createdAt\": \"2022-09-15T03:48:57.296Z\",\n            \"updatedAt\": \"2022-09-15T03:48:57.296Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 3,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTY2MzIxMzg1NywiZXhwIjoxNjYzMzAwMjU3fQ.G64Hbp0Uiir9QEwu2KS7E-lFbxLiYNkjLKcCdTdaa5NsVpLLo6w3z1xrfLR4T4KBoKB5XyM4Gb5MPvKWhhF3BKfNdi8NPXLWG8-5Hd5XaHAKcw5qfJbEm3Cs7WA1NmzkdjB1Ol8P26a7n8R013kzsOSQHeWz8hpralLoNLbrewiMedXB_2tG5Y-1VVpdnnJwrwhC1GdLrjmFKDDkJ7IvVZrjT09AdPjgJ_U_RE0h0c9vJOtqGLw-WRCOOwLza4RmhzYqm7JAA8Syq1JRG7BpwFswr0BvDP2ra9LNA1V9VaCA5PGs9wLGoAHW4f50l1ha8nxuLa8tBHJx1ZK8g5-0iAwpOuUFktnh3ID7iqczPUWc01pObdtnZxFXOJDxFQwjnLgmqM-mM2-eHE661r6ui4kuG9CTCyXf1GuOjMD8w-Kfe_Z8jhQeamcZqrsMKMu2nf9RZ7WWtqBnP9qxlxJevygym1c6et01lnReURZsklzi8fbaB_JiIVuWg42HoE7LZ89fOiCCVeTV3GI5QhbPm5qXv1WcsoFKRNe4vfR_Zq45Y3zZ1o1Tb-zyWyqQyHPe1ivClBxOgJFkzlWsdFD2PStbuV9IV3Nyqd7rnsGIX4qpqcIAVTQVF4JFWul51fDIUE1vtZ7ofHYFfZox1GrxwrazgJWLOAbqqrFV3yvECoo\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"fc7a8a48-96f7-42fa-a7a6-43de9773ecad\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"63\"\n            },\n            \"createdAt\": \"2022-09-15T03:50:57.975Z\",\n            \"updatedAt\": \"2022-09-15T03:50:57.975Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 5,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTY2MzIxMzkwNSwiZXhwIjoxNjYzMzAwMzA1fQ.HBM8NGoqYJEZNiuCSixE19CeD0SpmQqXqk_sSgqqL4wid9rZwa-l-eZ86wIhO4ufzP3tM8Ar6iwfHBMYCBxAa0Tz8W3YekI0Ns2jFx0h5amEx6ZU8fCNZu25EgxAZ_OVZEx4XYsUFcTeOtcUEkhcCPG7x6-6IL1Sok6y2khxQFpcsAUjnzTlm_y6hExAmyW4l4-nvRxzBNqt0Ic9XZan9w4fDA7sr-gD4Z9Jx-O9hACR2RfVMQdtDOFRSCfADG-HeFZgUpjkvbXax0PAXTufjgei1fKcIBdwJrX3wfy4QkhUo7ZBw1ET_iqlHl_kiBApuUhgAKCiV0NgxpLrYlBkPWg7o3KIbf9yZtnaGSlL8VatPApujKaQpoMMiJKwFYJHXBUt6ULarEFBhXk3lNIiE0ZQydxUgDRd_jSHgpOgypaqZD8XLDUfkbgzWflOVQDdeJHW9i7eRlYSqpmr4UCmnoU8pDg_3jQXZ-OKt3uL1ADKpxK5Au4353BSKTqFrpU0hpAqc1XR9kLYJhCjvtPJ2X-9IdcQcKREtmG85H7q4CR2O8b6Ryxmt2Dhth9kSBY1awfwkzN77OmjJLLHueBVVPwO5hS7eU9SOyGNuQ0YHa_66nD_ng1EJRembAaMHbrnlw3OPQh8IlgLD8kNJB7A349_EcVNhwp8ZXfPMqDZu28\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"48a33441-e0c2-4d78-878e-88d4c3c1a4d2\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"833\"\n            },\n            \"createdAt\": \"2022-09-15T03:51:45.154Z\",\n            \"updatedAt\": \"2022-09-15T03:51:45.154Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 6,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc1ZlcmlmaWVkIjp0cnVlfSwiaWF0IjoxNjYzMjE1NjE4LCJleHAiOjE2NjMzMDIwMTh9.ELmeqreQVsZrPtYbeBST7tBXWpcPzE0V-CysC1Q8oOS0lEyc5YZVoIzw6tDMExnjB5-MUgOKhrdAMCNQjWrfBtFrxR4Hf9_IL56DggsdKgtaScmaFkW3j-lMfq6Buzl_txtgyWayWZ-JfgsxRbaaABSZkHAqsBe6dyR01GoklhMXhFaU_0hmNApb70t_U7bPZnUUe-97GQt6MZi_2ug__d1MaR_sIyWdCAMe1sSL_myp7F0qlXgp2olO5MgGcNlajc456Fgqmj6MzarlTtd5JMxlcnhpysgHpcVtts__tAIUa3GSK7vCFy9c6CPSW_9Dp6qnXluNi2d6E9j1dhBtBbVevj2-35TqrRbctL3I8WwkXb5kiSGtqnpZ_5lCc4Tf7ercTNF240jPh1sAb5eCF2ViKf5hSnpJpbDf9tjidmpSf_r00cFdkoPL0UtT7PnPrGo7nMAZGbBOvtrEPHpk7S47HJL3VEeZmn1Huq23FfaAc-C12FZyE3lvGDNgpioQbJcGYqbSh26cbi09YkMYmGxxQ-Q81LJ3pevB5mG4SCmrBUFQkwiU8Kemq-JCSZRhpoy8joSrqiM_rXDoQnZqGkiOuizNVv2sjY-Bcnm12mwmbmRzMYpQnLmLjW0X-hMCIngBKZFJgSz4IAyHGeNf4dVVLVHeoSbD2Mlqwy4DbiQ\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"209418e1-9733-4e26-8593-1d626afeaea3\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"63\"\n            },\n            \"createdAt\": \"2022-09-15T04:20:18.699Z\",\n            \"updatedAt\": \"2022-09-15T04:20:18.699Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 7,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc1ZlcmlmaWVkIjp0cnVlfSwiaWF0IjoxNjYzMjE1NzYwLCJleHAiOjE2NjMzMDIxNjB9.egaMnLgfF16QQ2UnE2po97ZetETPogqSrHnNjGQVhYMXurAbvRroQMc8wi1-5PEAQQI1FoZ-dwHGJRvUY5xWRjTWUcbL2hQsMLtV_SXZV50NHxEZyTjdJJjC2qQNZ1_0OF-GPuTAcln3Mu8IKX5_zbzT7BLjT3bQE51cQZvwY9fyM2trQTNE9C8M5CDjINaWBNtCB83KdtHM6IJo2-1BieYPdfz7LCzjnBnUgI0mrFzCioOlhG7UtryymXXCzfLX4eueLO12c9QP-wcx1dfdzvWXKaE419i8-nIoouEnbhpqM4VAAWISG6Oi_F5S19DWuNrlvfKdHSEwnSEgEhrLeJoUGronxPu2iFSvBzm24YdERRmDIBv_E0Szm76gElCLQjiQeFXkgY2KZy3w4VfGzR7RHwiPk6KQZ2teKvk4nx86B5CPgoZN_au89LCKxuzsPXtc7Y5EKiAd9gVzlpfGCV21gTF2Mw8GPmHRnfcvMGIU4CMHd_wk4Cu7fw4Q0oRLFXTtm5nSC1qd5gaeLXvJs7KMYLxVMaloInBQlhvzbpa9gxA43St0vCyAQRkJkjTI2czADHNd_XbtXO_W-PFTcJsyRb-Tt1AvYUKj_tH142jHi2fWTYC6wHGwfv_o6MmY31aKFjJ0-eXbRuXWKg8yGeDZ9cjku38kCYHnM9pkllI\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"39fe2dff-e0e7-49f9-9c16-3ed9fd211604\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"63\"\n            },\n            \"createdAt\": \"2022-09-15T04:22:40.078Z\",\n            \"updatedAt\": \"2022-09-15T04:22:40.078Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 12,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc1ZlcmlmaWVkIjp0cnVlfSwiaWF0IjoxNjYzMjMyNjYyLCJleHAiOjE2NjMyMzYyNjJ9.PAv3APDvE-HwaAb_A0QUCnHm_MjqeM50CJglxTyUiFv7MKKFfZ1PfRu9-rj474N5IicmsMA5uhYGDQyFlWNqzPgimTm4AmN_vLl-6ehaMYhz0tHw-Uh9NfkMpsMvgOMCQcmgKN1zJAyM-IvqhhMDta1FRizhvz2t2_7lqn7M-II5KVJZokHl0HwgFT_ZHPnEmaaWeIsXZZjOKYb0M4PLr1a0GwR-jeOK5FVzlxXUqevDCgaq-pE71Wd7YE4UHi_7ah8tn2c7hFkebnJqr6l4uJ8_x5W69HVuu2NWCuBg9L1_NewHpuFnhnOlsiVH8gB5kiKia0l9FbpvkZ_10dJwHS6rPja4jWZMXyLhu27KVV8Eh6xRczxjjRbiQ3uT5frBR7u0Gvfz1fBCeo_K6vwvbrLJN0l-Sy3lP_8B3loPd65WvPGn9OdKvdJHncVBTOeAZoAF9QkUrYM7c8HIYmsgF0DwqZA4G7SishCZwbb0lxXNlbrtPCEUCKoqYhJ8fGya0tRnYan5CT7eIr2kEAdtQq2GmiLzyZaYyubuP56X-PWEW8ASQaeWVd9yAWhwkxZxZn5POTBY5r3_r9F9214d2pW6gQxAWi92QyTsCcub8yBh3s9ZXwZ-u8fmpH_0hnaoQjacARiTUdkydRZ6EFOocBCPnFlcApiLtXa7dHNHeLM\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"d04c6a1d-58de-41bd-9fd3-0d44e52241af\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"839\"\n            },\n            \"createdAt\": \"2022-09-15T09:04:22.491Z\",\n            \"updatedAt\": \"2022-09-15T09:04:22.491Z\",\n            \"userId\": 1\n        }\n    ]\n}"
+						},
+						{
+							"name": "token expired",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/auth-tokens",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"auth-tokens"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6e-Qrice194ow0U6/paZCw6Y3e9STg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 09:14:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"name\": \"TokenExpired\",\n        \"mess\": \"Token is expired, please check logged devices for security purposes\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete list of auth tokens",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"authTokenIdList\": [2,3,5,6,7,12]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TOY_URL}}/api/auth/auth-tokens",
+							"host": [
+								"{{TOY_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"auth-tokens"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete list of auth tokens",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{TOY_URL}}/api/auth/auth-tokens",
+									"host": [
+										"{{TOY_URL}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"auth-tokens"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "7201"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c21-6tjw9iNBU5xTvwHktQ+diO9XYPM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 09:07:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 6,\n    \"rows\": [\n        {\n            \"id\": 2,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOmZhbHNlLCJpYXQiOjE2NjMyMTM3MzcsImV4cCI6MTY2MzMwMDEzN30.Zj01mZ-dykeIh59-upZkthEur9NAmhdcqQiGnsKcGkc3pawBd7TAiUbw3lCu3OktS0us48Ldhe7LyuOQm17qzx15th2xujRxsqaOE_c87d7KquzN_f72sbER04aL2PGqJjFRgphFXM9Sehz29DQx2YugZ73CCCGr7yutHaV5GZfPSR7bvQViEbkcjV7UrZIsk6pjsCfnTsrf1KndmI6FDNabGrBMf-r7jZeBFh8pw89SATBEjy_FI6nGPTsxJ8vBNrlInne6AMnPFNHRNH2zBjqcIR0TBNFTRuemQLJu_DArp9VQJh4TE-RjFqmkWp2RdKvbKVon4WNlka98Hwv15qo7iRyKYLnBAtyFG_kr17MBaOtf00bT3io9QumokYGIPjoVuDTLJaUxb5T2_BO2CT_NvSx2bYzUJUsRgRnsrOHYGSaO8UZe57s4p9YRL82jEYr5zJOeQtJvylo4hTzGRO8OGpbvzVlcNiJn-ZgYDFdhvzjXzfunjG2UZzPSPdm5-RwIfD-hqlX13365bnaL9UFjB4PEbGOJFBVTVowVaZxcjLWp4IanmTwsgq7w1OOmnMViPodGE6VrvEvmL9wB_CZhdBiLRcvvdKJAGtaS1Q-oWD9fq7TP-lUK7PX8pugGWlBES_8l_eYXcZJGwwCSpD0LPam489ge7fpVvR2yjoU\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"07312683-ef56-44ea-8596-b527a4f1d7c9\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"834\"\n            },\n            \"createdAt\": \"2022-09-15T03:48:57.296Z\",\n            \"updatedAt\": \"2022-09-15T03:48:57.296Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 3,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTY2MzIxMzg1NywiZXhwIjoxNjYzMzAwMjU3fQ.G64Hbp0Uiir9QEwu2KS7E-lFbxLiYNkjLKcCdTdaa5NsVpLLo6w3z1xrfLR4T4KBoKB5XyM4Gb5MPvKWhhF3BKfNdi8NPXLWG8-5Hd5XaHAKcw5qfJbEm3Cs7WA1NmzkdjB1Ol8P26a7n8R013kzsOSQHeWz8hpralLoNLbrewiMedXB_2tG5Y-1VVpdnnJwrwhC1GdLrjmFKDDkJ7IvVZrjT09AdPjgJ_U_RE0h0c9vJOtqGLw-WRCOOwLza4RmhzYqm7JAA8Syq1JRG7BpwFswr0BvDP2ra9LNA1V9VaCA5PGs9wLGoAHW4f50l1ha8nxuLa8tBHJx1ZK8g5-0iAwpOuUFktnh3ID7iqczPUWc01pObdtnZxFXOJDxFQwjnLgmqM-mM2-eHE661r6ui4kuG9CTCyXf1GuOjMD8w-Kfe_Z8jhQeamcZqrsMKMu2nf9RZ7WWtqBnP9qxlxJevygym1c6et01lnReURZsklzi8fbaB_JiIVuWg42HoE7LZ89fOiCCVeTV3GI5QhbPm5qXv1WcsoFKRNe4vfR_Zq45Y3zZ1o1Tb-zyWyqQyHPe1ivClBxOgJFkzlWsdFD2PStbuV9IV3Nyqd7rnsGIX4qpqcIAVTQVF4JFWul51fDIUE1vtZ7ofHYFfZox1GrxwrazgJWLOAbqqrFV3yvECoo\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"fc7a8a48-96f7-42fa-a7a6-43de9773ecad\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"63\"\n            },\n            \"createdAt\": \"2022-09-15T03:50:57.975Z\",\n            \"updatedAt\": \"2022-09-15T03:50:57.975Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 5,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTY2MzIxMzkwNSwiZXhwIjoxNjYzMzAwMzA1fQ.HBM8NGoqYJEZNiuCSixE19CeD0SpmQqXqk_sSgqqL4wid9rZwa-l-eZ86wIhO4ufzP3tM8Ar6iwfHBMYCBxAa0Tz8W3YekI0Ns2jFx0h5amEx6ZU8fCNZu25EgxAZ_OVZEx4XYsUFcTeOtcUEkhcCPG7x6-6IL1Sok6y2khxQFpcsAUjnzTlm_y6hExAmyW4l4-nvRxzBNqt0Ic9XZan9w4fDA7sr-gD4Z9Jx-O9hACR2RfVMQdtDOFRSCfADG-HeFZgUpjkvbXax0PAXTufjgei1fKcIBdwJrX3wfy4QkhUo7ZBw1ET_iqlHl_kiBApuUhgAKCiV0NgxpLrYlBkPWg7o3KIbf9yZtnaGSlL8VatPApujKaQpoMMiJKwFYJHXBUt6ULarEFBhXk3lNIiE0ZQydxUgDRd_jSHgpOgypaqZD8XLDUfkbgzWflOVQDdeJHW9i7eRlYSqpmr4UCmnoU8pDg_3jQXZ-OKt3uL1ADKpxK5Au4353BSKTqFrpU0hpAqc1XR9kLYJhCjvtPJ2X-9IdcQcKREtmG85H7q4CR2O8b6Ryxmt2Dhth9kSBY1awfwkzN77OmjJLLHueBVVPwO5hS7eU9SOyGNuQ0YHa_66nD_ng1EJRembAaMHbrnlw3OPQh8IlgLD8kNJB7A349_EcVNhwp8ZXfPMqDZu28\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"48a33441-e0c2-4d78-878e-88d4c3c1a4d2\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"833\"\n            },\n            \"createdAt\": \"2022-09-15T03:51:45.154Z\",\n            \"updatedAt\": \"2022-09-15T03:51:45.154Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 6,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc1ZlcmlmaWVkIjp0cnVlfSwiaWF0IjoxNjYzMjE1NjE4LCJleHAiOjE2NjMzMDIwMTh9.ELmeqreQVsZrPtYbeBST7tBXWpcPzE0V-CysC1Q8oOS0lEyc5YZVoIzw6tDMExnjB5-MUgOKhrdAMCNQjWrfBtFrxR4Hf9_IL56DggsdKgtaScmaFkW3j-lMfq6Buzl_txtgyWayWZ-JfgsxRbaaABSZkHAqsBe6dyR01GoklhMXhFaU_0hmNApb70t_U7bPZnUUe-97GQt6MZi_2ug__d1MaR_sIyWdCAMe1sSL_myp7F0qlXgp2olO5MgGcNlajc456Fgqmj6MzarlTtd5JMxlcnhpysgHpcVtts__tAIUa3GSK7vCFy9c6CPSW_9Dp6qnXluNi2d6E9j1dhBtBbVevj2-35TqrRbctL3I8WwkXb5kiSGtqnpZ_5lCc4Tf7ercTNF240jPh1sAb5eCF2ViKf5hSnpJpbDf9tjidmpSf_r00cFdkoPL0UtT7PnPrGo7nMAZGbBOvtrEPHpk7S47HJL3VEeZmn1Huq23FfaAc-C12FZyE3lvGDNgpioQbJcGYqbSh26cbi09YkMYmGxxQ-Q81LJ3pevB5mG4SCmrBUFQkwiU8Kemq-JCSZRhpoy8joSrqiM_rXDoQnZqGkiOuizNVv2sjY-Bcnm12mwmbmRzMYpQnLmLjW0X-hMCIngBKZFJgSz4IAyHGeNf4dVVLVHeoSbD2Mlqwy4DbiQ\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"209418e1-9733-4e26-8593-1d626afeaea3\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"63\"\n            },\n            \"createdAt\": \"2022-09-15T04:20:18.699Z\",\n            \"updatedAt\": \"2022-09-15T04:20:18.699Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 7,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc1ZlcmlmaWVkIjp0cnVlfSwiaWF0IjoxNjYzMjE1NzYwLCJleHAiOjE2NjMzMDIxNjB9.egaMnLgfF16QQ2UnE2po97ZetETPogqSrHnNjGQVhYMXurAbvRroQMc8wi1-5PEAQQI1FoZ-dwHGJRvUY5xWRjTWUcbL2hQsMLtV_SXZV50NHxEZyTjdJJjC2qQNZ1_0OF-GPuTAcln3Mu8IKX5_zbzT7BLjT3bQE51cQZvwY9fyM2trQTNE9C8M5CDjINaWBNtCB83KdtHM6IJo2-1BieYPdfz7LCzjnBnUgI0mrFzCioOlhG7UtryymXXCzfLX4eueLO12c9QP-wcx1dfdzvWXKaE419i8-nIoouEnbhpqM4VAAWISG6Oi_F5S19DWuNrlvfKdHSEwnSEgEhrLeJoUGronxPu2iFSvBzm24YdERRmDIBv_E0Szm76gElCLQjiQeFXkgY2KZy3w4VfGzR7RHwiPk6KQZ2teKvk4nx86B5CPgoZN_au89LCKxuzsPXtc7Y5EKiAd9gVzlpfGCV21gTF2Mw8GPmHRnfcvMGIU4CMHd_wk4Cu7fw4Q0oRLFXTtm5nSC1qd5gaeLXvJs7KMYLxVMaloInBQlhvzbpa9gxA43St0vCyAQRkJkjTI2czADHNd_XbtXO_W-PFTcJsyRb-Tt1AvYUKj_tH142jHi2fWTYC6wHGwfv_o6MmY31aKFjJ0-eXbRuXWKg8yGeDZ9cjku38kCYHnM9pkllI\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"39fe2dff-e0e7-49f9-9c16-3ed9fd211604\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"63\"\n            },\n            \"createdAt\": \"2022-09-15T04:22:40.078Z\",\n            \"updatedAt\": \"2022-09-15T04:22:40.078Z\",\n            \"userId\": 1\n        },\n        {\n            \"id\": 12,\n            \"refreshToken\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc1ZlcmlmaWVkIjp0cnVlfSwiaWF0IjoxNjYzMjMyNjYyLCJleHAiOjE2NjMyMzYyNjJ9.PAv3APDvE-HwaAb_A0QUCnHm_MjqeM50CJglxTyUiFv7MKKFfZ1PfRu9-rj474N5IicmsMA5uhYGDQyFlWNqzPgimTm4AmN_vLl-6ehaMYhz0tHw-Uh9NfkMpsMvgOMCQcmgKN1zJAyM-IvqhhMDta1FRizhvz2t2_7lqn7M-II5KVJZokHl0HwgFT_ZHPnEmaaWeIsXZZjOKYb0M4PLr1a0GwR-jeOK5FVzlxXUqevDCgaq-pE71Wd7YE4UHi_7ah8tn2c7hFkebnJqr6l4uJ8_x5W69HVuu2NWCuBg9L1_NewHpuFnhnOlsiVH8gB5kiKia0l9FbpvkZ_10dJwHS6rPja4jWZMXyLhu27KVV8Eh6xRczxjjRbiQ3uT5frBR7u0Gvfz1fBCeo_K6vwvbrLJN0l-Sy3lP_8B3loPd65WvPGn9OdKvdJHncVBTOeAZoAF9QkUrYM7c8HIYmsgF0DwqZA4G7SishCZwbb0lxXNlbrtPCEUCKoqYhJ8fGya0tRnYan5CT7eIr2kEAdtQq2GmiLzyZaYyubuP56X-PWEW8ASQaeWVd9yAWhwkxZxZn5POTBY5r3_r9F9214d2pW6gQxAWi92QyTsCcub8yBh3s9ZXwZ-u8fmpH_0hnaoQjacARiTUdkydRZ6EFOocBCPnFlcApiLtXa7dHNHeLM\",\n            \"requestHeaders\": {\n                \"content-type\": \"application/json\",\n                \"user-agent\": \"PostmanRuntime/7.29.2\",\n                \"accept\": \"*/*\",\n                \"postman-token\": \"d04c6a1d-58de-41bd-9fd3-0d44e52241af\",\n                \"host\": \"localhost:3000\",\n                \"accept-encoding\": \"gzip, deflate, br\",\n                \"connection\": \"keep-alive\",\n                \"content-length\": \"839\"\n            },\n            \"createdAt\": \"2022-09-15T09:04:22.491Z\",\n            \"updatedAt\": \"2022-09-15T09:04:22.491Z\",\n            \"userId\": 1\n        }\n    ]\n}"
 						}
 					]
 				}

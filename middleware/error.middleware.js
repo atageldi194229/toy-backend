@@ -3,7 +3,7 @@ const { ServerError, DatabaseError } = require("../errors/server_errors");
 /**
  * Express Error Handler
  * @function errorHandler
- * @param {ErrorResponse} err - error for response
+ * @param {Error} err - error for response
  * @param {RequestHandler} req
  * @param {ResponseHandler} res
  * @param {any} next

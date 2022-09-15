@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   let AuthToken = sequelize.define(
     "AuthToken",
     {
-      refreshToken: DataTypes.STRING,
+      refreshToken: DataTypes.TEXT,
       requestHeaders: DataTypes.JSON,
     },
     {

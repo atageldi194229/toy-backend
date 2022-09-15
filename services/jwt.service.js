@@ -3,41 +3,96 @@
 const fs = require("fs");
 const path = require("path");
 const jwt = require("jsonwebtoken");
+const { TokenDecodeError, TokenExpired } = require("../errors/server_errors");
+const { certificates } = require("../config/config");
 
-const options = {
-  expiresIn: process.env.JWT_EXPIRE || "2h",
-  algorithm: process.env.JWT_ALGORITHM || "RS256",
-};
+class JwtToken {
+  constructor({ publicKey, privateKey }, options) {
+    this.publicKey = publicKey;
+    this.privateKey = privateKey;
+    this.options = options;
+  }
 
-const privateKey = fs
-  .readFileSync(path.join(__dirname, "../config/private.key"), "utf8")
-  .replace(/\\n/gm, "\n");
-const publicKey = fs
-  .readFileSync(path.join(__dirname, "../config/public.key"), "utf8")
-  .replace(/\\n/gm, "\n");
+  verify(token) {
+    try {
+      return jwt.verify(token, this.publicKey, this.options);
+    } catch (_) {
+      throw new TokenExpired();
+    }
+  }
 
-// const privateKey = process.env.JWT_SECRET;
-// const publicKey = process.env.JWT_SECRET;
+  sign(payload) {
+    return jwt.sign(payload, this.privateKey, this.options);
+  }
+
+  decode(token) {
+    try {
+      return jwt.decode(token, { complete: true });
+    } catch (_) {
+      throw new TokenDecodeError();
+    }
+  }
+}
+
+class RefreshToken extends JwtToken {
+  constructor() {
+    const options = {
+      expiresIn: process.env.JWT_EXPIRE || "1d",
+      algorithm: process.env.JWT_ALGORITHM || "RS256",
+    };
+
+    super(certificates[0], options);
+  }
+}
+
+class AccessToken extends JwtToken {
+  constructor() {
+    const options = {
+      expiresIn: process.env.JWT_EXPIRE || "2h",
+      algorithm: process.env.JWT_ALGORITHM || "RS256",
+    };
+
+    super(certificates[1], options);
+  }
+}
+
+const _accessToken = new AccessToken();
+const _refreshToken = new RefreshToken();
+
+exports.accessToken = () => _accessToken;
+exports.refreshToken = () => _refreshToken;
 
 /**
- * Get signed token
- * @param {Object} payload
- * @returns {string} jwt signed token
+ * To sign refresh token
+ * @param {*} payload
+ * @returns
  */
-exports.sign = (payload) => {
-  return jwt.sign(payload, privateKey, options);
+exports.signRefreshToken = (payload) => {
+  return jwt.sign(payload, certificates[0].privateKey, refreshTokenOptions);
 };
 
 /**
- * Verify token for expire
- * @param {string} token
- * @returns {boolean} true if not expired, otherwise false
+ * To sign access token
+ * @param {*} payload
+ * @returns
  */
-exports.verify = (token) => {
+exports.signAccessToken = (payload) => {
+  return jwt.sign(payload, certificates[1].privateKey, accessTokenOptions);
+};
+
+exports.verifyRefreshToken = (token) => {
   try {
-    return jwt.verify(token, publicKey, options);
+    return jwt.verify(token, certificates[0].publicKey, refreshTokenOptions);
   } catch (error) {
-    return false;
+    throw new TokenExpired();
+  }
+};
+
+exports.verifyAccessToken = (token) => {
+  try {
+    return jwt.verify(token, certificates[1].publicKey, accessTokenOptions);
+  } catch (error) {
+    throw new TokenExpired();
   }
 };
 
@@ -47,20 +102,9 @@ exports.verify = (token) => {
  * @returns {Object} token payload
  */
 exports.decode = (token) => {
-  return jwt.decode(token, { complete: true });
-};
-
-/**
- * First verify token for expire then get payload
- * @param {string} token
- * @returns {Object | boolean} token payload
- */
-exports.verifyAndDecode = (token) => {
-  if (exports.verify(token)) {
-    try {
-      const { payload } = exports.decode(token);
-      return payload;
-    } catch (err) {}
+  try {
+    return jwt.decode(token, { complete: true });
+  } catch (_) {
+    throw new TokenDecodeError();
   }
-  return false;
 };

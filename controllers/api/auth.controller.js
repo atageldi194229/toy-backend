@@ -25,6 +25,20 @@ const hashPassword = (password) => {
 };
 
 /**
+ * Create token PAYLOAD
+ * @param {User} user
+ * @returns {Object} payload
+ */
+const createTokenPayload = (user) => {
+  return {
+    user: {
+      id: user.id,
+      isVerified: user.isVerified,
+    },
+  };
+};
+
+/**
  * Login then return TOKENS
  * Creates new refresh token
  * @param {User} user
@@ -32,16 +46,17 @@ const hashPassword = (password) => {
  * @returns {Object}
  */
 const loginAndGetResponse = async (user, req) => {
-  const refreshToken = uuidv4();
+  const refreshToken = JwtService.refreshToken().sign(
+    createTokenPayload(user),
+    "24h"
+  );
 
   await user.createAuthToken({
     refreshToken,
     requestHeaders: req.headers,
   });
 
-  const accessToken = JwtService.sign({
-    userId: user.id,
-  });
+  const accessToken = JwtService.accessToken().sign(createTokenPayload(user));
 
   return {
     refreshToken,
@@ -106,6 +121,9 @@ exports.refreshToken = expressAsyncHandler(async (req, res) => {
   // delete old refresh token
   await auth.destroy();
 
+  // check token for expire time
+  JwtService.refreshToken().verify(refreshToken);
+
   res.status(200).json(await loginAndGetResponse(user, req));
 });
 
@@ -154,6 +172,24 @@ exports.verifyUser = expressAsyncHandler(async (req, res) => {
       where: { phoneNumber },
     }
   );
+
+  res.status(200).json({ success: true });
+});
+
+exports.getAuthTokens = expressAsyncHandler(async (req, res) => {
+  const { user } = req;
+
+  const result = await AuthToken.findAndCountAll({
+    where: { userId: user.id },
+  });
+
+  res.status(200).json(result);
+});
+
+exports.deleteAuthTokens = expressAsyncHandler(async (req, res) => {
+  const { authTokenIdList } = req.body;
+
+  await AuthToken.destroy({ where: { id: authTokenIdList } });
 
   res.status(200).json({ success: true });
 });
